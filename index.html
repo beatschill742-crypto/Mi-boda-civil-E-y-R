@@ -429,34 +429,62 @@
             justify-content: center;
             gap: 10px;
             background: linear-gradient(135deg, var(--color-gold-rich), #a8861d);
-        .rsvp-section .section-subtitle { color: var(--color-white); opacity: 0.8; }
+            color: #111;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.6);
+        }
+
+        .rsvp-section .section-subtitle { opacity: 0.8; }
 
         .rsvp-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(229, 177, 93, 0.4);
-            border-radius: 16px;
-            padding: 40px 25px;
-            max-width: 500px;
+            background: linear-gradient(145deg, rgba(15, 33, 23, 0.95), rgba(5, 10, 7, 0.98));
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 20px;
+            padding: 45px 35px;
+            max-width: 550px;
             margin: 0 auto;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group { margin-bottom: 25px; text-align: left; }
         .form-group label {
             display: block; font-size: 0.85rem; text-transform: uppercase;
-            letter-spacing: 2px; color: var(--color-gold-light); margin-bottom: 8px; font-weight: 600;
+            letter-spacing: 2px; color: var(--color-gold-light); margin-bottom: 10px; font-weight: 600;
         }
         .form-input {
-            width: 100%; padding: 14px; border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.95);
+            width: 100%; padding: 16px; border-radius: 10px;
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            background: rgba(0, 0, 0, 0.4);
             color: var(--color-text); font-family: 'Montserrat', sans-serif; font-size: 1rem;
-            outline: none; transition: all 0.3s;
+            outline: none; transition: all 0.3s ease;
         }
-        .form-input:focus { border-color: var(--color-gold); box-shadow: 0 0 15px rgba(229, 177, 93, 0.5); }
+        .form-input:focus { 
+            border-color: var(--color-gold-rich); 
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); 
+            background: rgba(0, 0, 0, 0.7); 
+        }
+        .form-input option { 
+            background-color: var(--color-emerald); 
+            color: var(--color-text); 
+        }
         
-        #rsvp-form-container { display: none; margin-top: 20px; animation: fadeIn 0.5s ease; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        #rsvp-form-container { display: none; margin-top: 25px; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
 
         .btn-whatsapp {
             background: rgba(255,255,255,0.05);
@@ -521,7 +549,7 @@
         
         <!-- Hero Section -->
         <section class="hero-section">
-            <img src="Rodrigo 1.jpeg" alt="Erika y Rodrigo" class="hero-img" onerror="this.src='https://placehold.co/800x1200/0f2117/d4af37?text=Rodrigo+1.jpeg'">
+            <img src="rodrigo 1.jpeg" alt="Erika y Rodrigo" class="hero-img" onerror="this.src='https://placehold.co/800x1200/0f2117/d4af37?text=rodrigo+1.jpeg'">
             <div class="hero-gradient"></div>
 
             <p class="section-subtitle" style="margin-bottom: 15px; color: var(--color-gold-light);">¡Nos Casamos!</p>
@@ -562,27 +590,27 @@
             
             <div class="collage-grid">
                 <div class="collage-item">
-                    <img src="Rodrigo 2.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=Rodrigo+2.jpeg'">
+                    <img src="rodrigo 2.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=rodrigo+2.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Donde comienza nuestra historia."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="Rodrigo 3.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=Rodrigo+3.jpeg'">
+                    <img src="rodrigo 3.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=rodrigo+3.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Tú eres mi lugar favorito."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="Rodrigo 4.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=Rodrigo+4.jpeg'">
+                    <img src="rodrigo 4.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=rodrigo+4.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Mil millones de sonrisas y elijo la tuya."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="Rodrigo 5.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=Rodrigo+5.jpeg'">
+                    <img src="rodrigo 5.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=rodrigo+5.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Caminando juntos hacia el futuro."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="Rodrigo 6.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=Rodrigo+6.jpeg'">
+                    <img src="rodrigo 6.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=rodrigo+6.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Eres mi hoy y todos mis mañanas."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="Rodrigo 7.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=Rodrigo+7.jpeg'">
+                    <img src="rodrigo 7.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=rodrigo+7.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Amor en cada mirada."</p></div>
                 </div>
             </div>
@@ -619,8 +647,8 @@
 
             <div class="rsvp-card">
                 <!-- Botón Desplegable -->
-                <button type="button" class="btn-modern" id="reveal-rsvp-btn" style="width: 100%; background: var(--color-gold); color: var(--color-text);" onclick="document.getElementById('rsvp-form-container').style.display='block'; this.style.display='none';">
-                    Confirmar Asistencia
+                <button type="button" class="btn-modern" id="reveal-rsvp-btn" style="width: 100%; padding: 20px; font-size: 1.15rem;" onclick="document.getElementById('rsvp-form-container').style.display='block'; this.style.display='none';">
+                    ✨ Quiero realizar mi confirmación
                 </button>
 
                 <!-- Formulario Oculto -->
