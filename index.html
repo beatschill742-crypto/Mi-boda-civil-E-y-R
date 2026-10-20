@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda Civil - Erika & Rodrigo</title>
+    <title>Boda Civil - Erika & Rodrigo</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Colores más vivos y modernos */
-            --color-bg: #fdfcfb;
-            --color-primary: #2d6a4f; /* Verde esmeralda vivo */
-            --color-primary-light: #40916c;
-            --color-gold: #e5b15d; /* Dorado brillante */
-            --color-gold-light: #f9d89c;
-            --color-text: #1b4332;
-            --color-white: #ffffff;
-            --color-rose: #f28482; /* Toque coral vivo */
+            /* Paleta Premium Alta Gama (Dark Mode Esmeralda y Oro) */
+            --color-bg-deep: #050a07; /* Casi negro con tinte verde */
+            --color-emerald: #0f2117; /* Verde bosque profundo */
+            --color-emerald-light: #1b3828;
+            --color-gold-rich: #d4af37; /* Dorado metálico puro */
+            --color-gold-light: #fef0c7;
+            --color-text: #f0f4f2; /* Blanco roto/lino para no lastimar la vista */
+            --color-rose: #d48a8e;
         }
 
         * {
@@ -30,56 +29,76 @@
 
         body, html {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--color-bg);
+            background-color: var(--color-bg-deep);
             color: var(--color-text);
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* Bordados Laterales */
+        /* Lienzo para partículas y magia de fondo */
+        #magic-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.7;
+        }
+
+        #doves-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1001;
+            overflow: hidden;
+        }
+
+        /* Bordados Laterales Dinámicos (Dorados sobre oscuro) */
         .bordado-lateral {
             position: fixed;
             top: 0;
             bottom: 0;
-            width: 45px;
+            width: 50px;
             z-index: 100;
             pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='120' viewBox='0 0 40 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,10 C30,20 40,10 20,40 C0,10 10,20 20,10 Z' fill='%23e5b15d' opacity='0.6'/%3E%3Cpath d='M20,50 C35,65 5,65 20,80 C5,65 35,65 20,50 Z' fill='%2340916c' opacity='0.5'/%3E%3Ccircle cx='20' cy='95' r='3' fill='%232d6a4f' opacity='0.7'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='50' height='150' viewBox='0 0 50 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25,10 L35,25 L25,40 L15,25 Z' fill='none' stroke='%23d4af37' stroke-width='1.5' opacity='0.7'/%3E%3Ccircle cx='25' cy='60' r='3' fill='%23d4af37' opacity='0.5'/%3E%3Cpath d='M25,80 C45,100 5,100 25,120' fill='none' stroke='%23fef0c7' stroke-width='1' opacity='0.4'/%3E%3Ccircle cx='25' cy='135' r='2' fill='%23d4af37' opacity='0.8'/%3E%3C/svg%3E");
             background-repeat: repeat-y;
-            animation: scrollBordado 4s linear infinite;
+            animation: scrollBordado 6s linear infinite;
         }
 
         @keyframes scrollBordado {
-            0% { background-position-y: 0; }
-            100% { background-position-y: 120px; }
+            0% { background-position-y: -150px; }
+            100% { background-position-y: 0; }
         }
 
-        .bordado-izquierdo { left: 0; border-right: 1px solid rgba(229, 177, 93, 0.3); }
-        .bordado-derecho { right: 0; border-left: 1px solid rgba(229, 177, 93, 0.3); transform: scaleX(-1); }
+        .bordado-izquierdo { left: 0; border-right: 1px solid rgba(212, 175, 55, 0.2); background-color: rgba(15, 33, 23, 0.5); backdrop-filter: blur(3px); }
+        .bordado-derecho { right: 0; border-left: 1px solid rgba(212, 175, 55, 0.2); transform: scaleX(-1); background-color: rgba(15, 33, 23, 0.5); backdrop-filter: blur(3px); }
 
-        /* Contenedor de Globos */
-        #balloons-container {
+        /* Botón Sorpresa de Efectos Especiales */
+        .magic-fab {
             position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 10;
-            overflow: hidden;
+            bottom: 25px;
+            left: 60px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--color-gold-rich), #aa8529);
+            color: #111;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+            border: 2px solid var(--color-gold-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .floating-balloon {
-            position: absolute;
-            bottom: -150px;
-            animation: floatUp linear infinite;
-            will-change: transform;
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
-        }
-
-        @keyframes floatUp {
-            0% { transform: translateY(0) translateX(0) rotate(-5deg); opacity: 0; }
-            10% { opacity: 0.85; }
-            50% { transform: translateY(-55vh) translateX(20px) rotate(5deg); }
-            90% { opacity: 0.85; }
-            100% { transform: translateY(-120vh) translateX(-15px) rotate(-5deg); opacity: 0; }
+        .magic-fab:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.8);
         }
 
         /* Reproductor de Música */
@@ -89,30 +108,30 @@
             right: 60px;
             width: 55px;
             height: 55px;
-            background: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-emerald-light), var(--color-emerald));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
             cursor: pointer;
-            box-shadow: 0 5px 20px rgba(45, 106, 79, 0.5);
-            border: 2px solid var(--color-gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--color-gold-rich);
             transition: transform 0.3s;
         }
         .music-btn.playing { animation: pulseMusic 2s infinite alternate; }
-        .music-btn svg { width: 24px; height: 24px; fill: var(--color-white); }
+        .music-btn svg { width: 24px; height: 24px; fill: var(--color-gold-light); }
         
         @keyframes pulseMusic {
-            0% { box-shadow: 0 0 10px rgba(229, 177, 93, 0.4); transform: scale(1); }
-            100% { box-shadow: 0 0 25px rgba(229, 177, 93, 0.9); transform: scale(1.08); }
+            0% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); transform: scale(1); }
+            100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.8); transform: scale(1.08); }
         }
 
-        /* Sobre de Bienvenida */
+        /* Sobre de Bienvenida (Verde Oscuro y Oro) */
         #welcome-envelope {
             position: fixed;
             inset: 0;
-            background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+            background: linear-gradient(135deg, var(--color-emerald), var(--color-bg-deep));
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -127,44 +146,45 @@
         }
 
         .envelope-details {
-            border: 2px solid var(--color-gold);
-            padding: 40px;
+            border: 2px solid var(--color-gold-rich);
+            padding: 50px;
             border-radius: 12px;
             text-align: center;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
         .seal-button {
-            width: 90px;
-            height: 90px;
-            background: radial-gradient(circle, #f9d89c, #e5b15d, #b88636);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #f9d89c, #d4af37, #8a7120);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: -85px auto 20px;
+            margin: -100px auto 25px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 2px 5px rgba(255,255,255,0.6);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 2px 5px rgba(255,255,255,0.7);
             border: 2px solid #fff;
             transition: transform 0.3s;
         }
-        .seal-button:hover { transform: scale(1.1) rotate(5deg); }
+        .seal-button:hover { transform: scale(1.15) rotate(10deg); }
         .seal-button span {
             font-family: 'Pinyon Script', cursive;
-            font-size: 2.8rem;
-            color: #5c4116;
+            font-size: 3.2rem;
+            color: #4a3a0e;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
         }
 
         /* Wrapper General */
         .wrapper {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: var(--color-white);
-            box-shadow: 0 0 50px rgba(0,0,0,0.08);
+            background-color: transparent;
             position: relative;
             z-index: 20;
-            padding: 0 15px; /* Para no chocar con los bordados */
+            padding: 0 45px; /* Para no chocar con los bordados */
         }
 
         .hero-section {
@@ -175,9 +195,10 @@
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
-            padding-bottom: 15vh;
+            padding-bottom: 12vh;
             overflow: hidden;
-            border-bottom: 5px solid var(--color-gold);
+            border-bottom: 2px solid var(--color-gold-rich);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
         }
 
         .hero-img {
@@ -187,66 +208,77 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
+            filter: contrast(1.1) brightness(0.9);
         }
 
         .hero-gradient {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, var(--color-white) 0%, rgba(255,255,255,0.8) 30%, transparent 80%);
+            /* Gradiente oscuro de alto contraste */
+            background: linear-gradient(to top, var(--color-bg-deep) 0%, rgba(5, 10, 7, 0.8) 30%, transparent 100%);
             z-index: -1;
         }
 
         .names-title {
             font-family: 'Pinyon Script', cursive;
-            font-size: clamp(4.5rem, 10vw, 7rem);
-            color: var(--color-primary);
-            line-height: 1;
+            font-size: clamp(4.5rem, 12vw, 8rem);
+            color: transparent;
+            background: linear-gradient(to right, var(--color-gold-light), var(--color-gold-rich), #fff);
+            -webkit-background-clip: text;
+            line-height: 1.1;
             text-align: center;
-            text-shadow: 2px 2px 15px rgba(255,255,255,0.9);
-            margin-bottom: 10px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
+            padding: 0 20px;
         }
 
         .date-badge {
             display: inline-flex;
             align-items: center;
-            gap: 15px;
-            background: var(--color-gold-light);
-            padding: 10px 25px;
-            border-radius: 30px;
-            color: var(--color-text);
-            font-weight: 700;
-            letter-spacing: 2px;
+            gap: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--color-gold-rich);
+            padding: 12px 35px;
+            border-radius: 40px;
+            color: var(--color-gold-light);
+            font-weight: 600;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(229, 177, 93, 0.4);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .section-block {
-            padding: 80px 20px;
+            padding: 90px 20px;
             text-align: center;
+            background: linear-gradient(180deg, var(--color-bg-deep), var(--color-emerald), var(--color-bg-deep));
+            position: relative;
         }
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            color: var(--color-primary);
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            color: var(--color-gold-rich);
+            margin-bottom: 10px;
             font-style: italic;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.6);
         }
 
         .section-subtitle {
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--color-gold);
-            margin-bottom: 40px;
-            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--color-text);
+            opacity: 0.7;
+            margin-bottom: 45px;
+            font-weight: 500;
         }
 
         /* Collage Interactivo */
         .collage-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
             padding: 0 10px;
         }
 
@@ -254,54 +286,56 @@
             position: relative;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
             cursor: pointer;
-            height: 320px;
+            height: 380px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .collage-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         .collage-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(45, 106, 79, 0.9) 0%, rgba(45, 106, 79, 0.2) 60%, transparent 100%);
+            background: linear-gradient(to top, rgba(5, 10, 7, 0.95) 0%, rgba(5, 10, 7, 0.4) 50%, transparent 100%);
             display: flex;
             align-items: flex-end;
-            padding: 25px 20px;
+            padding: 30px 20px;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
         }
 
         .collage-quote {
-            color: var(--color-white);
+            color: var(--color-gold-light);
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-style: italic;
             transform: translateY(20px);
-            transition: transform 0.4s ease;
-            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+            transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.9);
         }
 
-        .collage-item:hover img { transform: scale(1.1); }
+        .collage-item:hover { border-color: var(--color-gold-rich); z-index: 10; }
+        .collage-item:hover img { transform: scale(1.12); }
         .collage-item:hover .collage-overlay { opacity: 1; }
         .collage-item:hover .collage-quote { transform: translateY(0); }
 
         
-        /* Animación Nivel Pixar */
+        /* Animación Nivel Pixar Cinemática */
         .pixar-container {
             position: relative;
             width: 100%;
-            height: 450px;
+            height: 500px;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(45, 106, 79, 0.3);
-            border: 3px solid var(--color-gold-light);
-            background: #f0f4f1;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+            border: 2px solid var(--color-gold-rich);
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -309,14 +343,17 @@
 
         #pixar-loading {
             text-align: center;
-            color: var(--color-primary);
-            font-weight: 600;
+            color: var(--color-gold-rich);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             animation: pulseText 1.5s infinite alternate;
         }
 
         @keyframes pulseText {
-            0% { opacity: 0.5; transform: scale(0.95); }
-            100% { opacity: 1; transform: scale(1.05); }
+            0% { opacity: 0.5; }
+            100% { opacity: 1; text-shadow: 0 0 15px rgba(212, 175, 55, 0.8); }
         }
 
         #pixar-img {
@@ -324,25 +361,28 @@
             height: 100%;
             object-fit: cover;
             display: none;
-            animation: cinematicPan 15s ease-in-out infinite alternate;
-            transform-origin: center center;
+            /* Efecto Ken Burns (Paneo y Zoom lento) */
+            animation: cinematicPan 18s ease-in-out infinite alternate;
+            transform-origin: 30% 40%;
         }
 
         @keyframes cinematicPan {
             0% { transform: scale(1.05) translate(0, 0); }
-            50% { transform: scale(1.15) translate(-2%, 2%); }
-            100% { transform: scale(1.1) translate(2%, -1%); }
+            50% { transform: scale(1.15) translate(-2%, 3%); }
+            100% { transform: scale(1.1) translate(3%, -2%); }
         }
 
+        /* Rayos de luz dinámicos estilo cine */
         .light-rays {
             position: absolute;
             inset: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0) 30%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 70%);
+            background: linear-gradient(45deg, rgba(255,255,255,0) 20%, rgba(255,240,200,0.15) 50%, rgba(255,255,255,0) 80%);
             background-size: 200% 200%;
-            animation: shineRays 5s infinite linear;
+            animation: shineRays 6s infinite linear;
             z-index: 4;
             pointer-events: none;
             display: none;
+            mix-blend-mode: overlay;
         }
 
         @keyframes shineRays {
@@ -359,26 +399,28 @@
 
         /* Ubicación y Botones */
         .location-card {
-            background: var(--color-bg);
-            border: 1px solid rgba(45, 106, 79, 0.15);
-            padding: 40px 30px;
+            background: rgba(15, 33, 23, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 50px 30px;
             border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .location-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; height: 6px;
-            background: linear-gradient(90deg, var(--color-gold), var(--color-primary));
+            top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, transparent, var(--color-gold-rich), transparent);
         }
 
         .location-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 20px;
             display: inline-block;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.8));
         }
 
         .btn-modern {
@@ -386,63 +428,74 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 14px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(45, 106, 79, 0.3);
-            border: none;
-            cursor: pointer;
-            margin-top: 15px;
-        }
-
-        .btn-modern:hover {
-            transform: translateY(-3px);
-            background: var(--color-primary-light);
-            box-shadow: 0 12px 25px rgba(45, 106, 79, 0.5);
-        }
-
-        .rsvp-section {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .rsvp-section .section-title { color: var(--color-gold-light); }
+            background: linear-gradient(135deg, var(--color-gold-rich), #a8861d);
         .rsvp-section .section-subtitle { color: var(--color-white); opacity: 0.8; }
 
-        .btn-whatsapp {
-            background: var(--color-white);
-            color: var(--color-primary);
-        }
-        .btn-whatsapp:hover {
-            background: var(--color-gold-light);
-            color: var(--color-text);
+        .rsvp-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(229, 177, 93, 0.4);
+            border-radius: 16px;
+            padding: 40px 25px;
+            max-width: 500px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
 
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label {
+            display: block; font-size: 0.85rem; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--color-gold-light); margin-bottom: 8px; font-weight: 600;
+        }
+        .form-input {
+            width: 100%; padding: 14px; border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.95);
+            color: var(--color-text); font-family: 'Montserrat', sans-serif; font-size: 1rem;
+            outline: none; transition: all 0.3s;
+        }
+        .form-input:focus { border-color: var(--color-gold); box-shadow: 0 0 15px rgba(229, 177, 93, 0.5); }
+        
+        #rsvp-form-container { display: none; margin-top: 20px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn-whatsapp {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--color-gold-rich);
+            color: var(--color-gold-light);
+            box-shadow: none;
+        }
+        .btn-whatsapp:hover {
+            background: var(--color-gold-rich);
+            color: #111;
+        }
+        .btn-whatsapp svg { fill: currentColor; width: 22px; height: 22px;}
+
         @media (max-width: 600px) {
-            .names-title { font-size: 4rem; }
-            .pixar-container { height: 300px; }
-            .collage-item { height: 250px; }
+            .wrapper { padding: 0 15px; }
+            .bordado-lateral { width: 30px; opacity: 0.6; }
+            .magic-fab { left: 15px; padding: 10px 15px; font-size: 0.75rem;}
+            .music-btn { right: 15px; }
+            .names-title { font-size: 4.5rem; }
+            .pixar-container { height: 350px; }
+            .collage-item { height: 300px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Lienzo de Magia (Chispas de fondo) -->
+    <canvas id="magic-canvas"></canvas>
+    <!-- Contenedor para Palomas Blancas -->
+    <div id="doves-container"></div>
+
     <!-- Bordados Laterales Fijos -->
     <div class="bordado-lateral bordado-izquierdo"></div>
     <div class="bordado-lateral bordado-derecho"></div>
 
-    <!-- Contenedor de Globos Animados -->
-    <div id="balloons-container"></div>
+    <!-- Botón Efecto Sorpresa -->
+    <div class="magic-fab" onclick="triggerMagicSurprise()">
+        ✨ Sorpréndeme
+    </div>
 
     <!-- Reproductor de Audio -->
     <audio id="bg-music" loop preload="auto">
@@ -456,11 +509,11 @@
     <!-- Sobre Animado de Bienvenida -->
     <div id="welcome-envelope">
         <div class="envelope-details">
-            <p style="color: var(--color-gold-light); font-weight: 600; letter-spacing: 4px; margin-bottom: 85px;">BODA CIVIL</p>
+            <p style="color: var(--color-gold-light); font-weight: 600; letter-spacing: 6px; margin-bottom: 90px; text-transform: uppercase;">Boda Civil</p>
             <div class="seal-button" onclick="openInvitation()">
                 <span>E&R</span>
             </div>
-            <p style="color: var(--color-white); font-size: 0.8rem; letter-spacing: 2px;">TOCA EL SELLO PARA ABRIR</p>
+            <p style="color: var(--color-text); font-size: 0.75rem; letter-spacing: 3px; opacity: 0.8;">TOCA EL SELLO PARA ABRIR</p>
         </div>
     </div>
 
@@ -468,17 +521,17 @@
         
         <!-- Hero Section -->
         <section class="hero-section">
-            <img src="rodrigo1.jpeg" alt="Erika y Rodrigo" class="hero-img" onerror="this.src='https://placehold.co/800x1200/40916c/ffffff?text=rodrigo1.jpeg'">
+            <img src="Rodrigo 1.jpeg" alt="Erika y Rodrigo" class="hero-img" onerror="this.src='https://placehold.co/800x1200/0f2117/d4af37?text=Rodrigo+1.jpeg'">
             <div class="hero-gradient"></div>
 
-            <p class="section-subtitle" style="margin-bottom: 10px;">¡Nos Casamos!</p>
-            <h1 class="names-title">Erika <span style="font-size: 0.7em;">&</span> Rodrigo</h1>
+            <p class="section-subtitle" style="margin-bottom: 15px; color: var(--color-gold-light);">¡Nos Casamos!</p>
+            <h1 class="names-title">Erika <span style="font-size: 0.6em; color: var(--color-gold-light);">&</span> Rodrigo</h1>
 
             <div class="date-badge">
                 <span>19</span>
-                <span style="color: var(--color-primary);">|</span>
+                <span style="color: var(--color-gold-rich);">|</span>
                 <span>DICIEMBRE</span>
-                <span style="color: var(--color-primary);">|</span>
+                <span style="color: var(--color-gold-rich);">|</span>
                 <span>2026</span>
             </div>
         </section>
@@ -494,7 +547,7 @@
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M12 6v6l4 2"></path>
                     </svg>
-                    <br>Pintando nuestra boda animada...
+                    <br>Pintando nuestra boda civil...
                 </div>
                 <img id="pixar-img" alt="Boda Animada Estilo Pixar">
                 <div class="light-rays" id="light-rays"></div>
@@ -502,33 +555,34 @@
             </div>
         </section>
 
-        <section class="section-block">
+        <!-- Galería Interactiva con Frases -->
+        <section class="section-block" style="background: transparent;">
             <h2 class="section-title">Nuestra Historia</h2>
             <p class="section-subtitle">Momentos inolvidables juntos</p>
             
             <div class="collage-grid">
                 <div class="collage-item">
-                    <img src="rodrigo2.jpeg" onerror="this.src='https://placehold.co/500x600/e5b15d/ffffff?text=rodrigo2.jpeg'">
+                    <img src="Rodrigo 2.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=Rodrigo+2.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Donde comienza nuestra historia."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="rodrigo3.jpeg" onerror="this.src='https://placehold.co/500x600/40916c/ffffff?text=rodrigo3.jpeg'">
+                    <img src="Rodrigo 3.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=Rodrigo+3.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Tú eres mi lugar favorito."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="rodrigo4.jpeg" onerror="this.src='https://placehold.co/500x600/e5b15d/ffffff?text=rodrigo4.jpeg'">
+                    <img src="Rodrigo 4.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=Rodrigo+4.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Mil millones de sonrisas y elijo la tuya."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="rodrigo5.jpeg" onerror="this.src='https://placehold.co/500x600/40916c/ffffff?text=rodrigo5.jpeg'">
+                    <img src="Rodrigo 5.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=Rodrigo+5.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Caminando juntos hacia el futuro."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="rodrigo6.jpeg" onerror="this.src='https://placehold.co/500x600/e5b15d/ffffff?text=rodrigo6.jpeg'">
+                    <img src="Rodrigo 6.jpeg" onerror="this.src='https://placehold.co/500x600/1b3828/fef0c7?text=Rodrigo+6.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Eres mi hoy y todos mis mañanas."</p></div>
                 </div>
                 <div class="collage-item">
-                    <img src="rodrigo7.jpeg" onerror="this.src='https://placehold.co/500x600/40916c/ffffff?text=rodrigo7.jpeg'">
+                    <img src="Rodrigo 7.jpeg" onerror="this.src='https://placehold.co/500x600/0f2117/fef0c7?text=Rodrigo+7.jpeg'">
                     <div class="collage-overlay"><p class="collage-quote">"Amor en cada mirada."</p></div>
                 </div>
             </div>
@@ -541,15 +595,15 @@
 
             <div class="location-card">
                 <span class="location-icon">🏛️</span>
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--color-primary); margin-bottom: 10px;">Ceremonia Civil</h3>
-                <p style="font-weight: 700; font-size: 1.2rem; color: var(--color-gold); margin-bottom: 20px;">03:00 P.M.</p>
-                <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 5px;">Pozolería El Pozolísimo</p>
-                <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">
+                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--color-gold-light); margin-bottom: 10px;">Ceremonia Civil</h3>
+                <p style="font-weight: 700; font-size: 1.3rem; color: var(--color-gold-rich); margin-bottom: 25px; letter-spacing: 2px;">03:00 P.M.</p>
+                <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 8px;">Pozolería El Pozolísimo</p>
+                <p style="color: #cbd5e1; line-height: 1.7; margin-bottom: 30px;">
                     Calzada Alta Tensión, Xochimilco 14654<br>
                     Ciudad de México, México.
                 </p>
                 <a href="https://www.google.com/maps/search/?api=1&query=Pozolería+El+Pozolísimo+Calzada+Alta+Tensión+Xochimilco+CDMX" target="_blank" class="btn-modern">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     Ver en Google Maps
                 </a>
             </div>
@@ -560,19 +614,53 @@
             <h2 class="section-title">Acompáñanos</h2>
             <p class="section-subtitle" style="margin-bottom: 40px; font-weight: 400; line-height: 1.6; text-transform: none; letter-spacing: 0;">
                 Queremos compartir el inicio de nuestra nueva etapa contigo.<br>
-                Por favor, confírmanos tu asistencia a través de WhatsApp.
+                Por favor, confírmanos tu asistencia para reservar tu lugar.
             </p>
 
-            <div style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
-                <a href="https://wa.me/525567033447?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20su%20Boda%20Civil." target="_blank" class="btn-modern btn-whatsapp">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    Confirmar (Contacto 1)
-                </a>
-                
-                <a href="https://wa.me/525636602070?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20su%20Boda%20Civil." target="_blank" class="btn-modern btn-whatsapp">
-                    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    Confirmar (Contacto 2)
-                </a>
+            <div class="rsvp-card">
+                <!-- Botón Desplegable -->
+                <button type="button" class="btn-modern" id="reveal-rsvp-btn" style="width: 100%; background: var(--color-gold); color: var(--color-text);" onclick="document.getElementById('rsvp-form-container').style.display='block'; this.style.display='none';">
+                    Confirmar Asistencia
+                </button>
+
+                <!-- Formulario Oculto -->
+                <div id="rsvp-form-container">
+                    <form id="rsvp-form">
+                        <div class="form-group">
+                            <label for="nombre">Nombre y Apellidos</label>
+                            <input type="text" id="nombre" name="Nombre" class="form-input" placeholder="Ej. Familia Pérez López" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="asiste">¿Asistirás al evento?</label>
+                            <select id="asiste" name="Asiste" class="form-input" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="Sí, ahí estaré">Sí, ahí estaré con gusto</option>
+                                <option value="No podré asistir">No podré asistir</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Número de Teléfono</label>
+                            <input type="tel" id="telefono" name="Telefono" class="form-input" placeholder="Ej. 55 1234 5678" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="comentarios">Comentarios Extra (Opcional)</label>
+                            <textarea id="comentarios" name="Comentarios" class="form-input" rows="2" placeholder="Ej. Restricciones alimenticias, felicitaciones..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-modern" id="submit-btn" style="width: 100%; margin-top: 10px;">
+                            Enviar Confirmación
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Mensaje de Éxito -->
+                <div id="rsvp-success" style="display: none; padding: 20px 10px; text-align: center;">
+                    <div style="margin-bottom: 15px;">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--color-gold-light); font-style: italic;">¡Gracias!</h4>
+                    <p style="color: var(--color-white); font-size: 1rem; margin-top: 10px;">Tu respuesta quedó registrada exitosamente.</p>
+                </div>
             </div>
         </section>
 
@@ -587,7 +675,8 @@
         function openInvitation() {
             document.getElementById('welcome-envelope').classList.add('open');
             startAudio();
-            generatePixarMoment(); // Iniciamos la generación de la imagen al abrir
+            generatePixarMoment(); 
+            initMagicCanvas(); // Iniciar partículas de fondo
         }
 
         function startAudio() {
@@ -610,57 +699,138 @@
             }
         }
 
-        // 2. Globos Elegantes (Esmeralda, Blanco, Dorado)
-        function spawnWeddingBalloons() {
-            const container = document.getElementById('balloons-container');
-            const colors = [
-                { c1: '#2d6a4f', c2: '#40916c' }, // Verde
-                { c1: '#ffffff', c2: '#f0f4f1' }, // Blanco
-                { c1: '#e5b15d', c2: '#f9d89c' }  // Dorado
-            ];
+        // 2. Fondo de Magia (Chispas Doradas)
+        let particles = [];
+        const canvas = document.getElementById('magic-canvas');
+        const ctx = canvas.getContext('2d');
 
-            function createBalloon() {
-                const wrap = document.createElement('div');
-                wrap.className = 'floating-balloon';
-                wrap.style.left = (Math.random() * 90) + 'vw';
+        function initMagicCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            for(let i=0; i<40; i++) {
+                particles.push(createParticle());
+            }
+            animateParticles();
+        }
+
+        window.addEventListener('resize', () => {
+            if(canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        });
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 0.5,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: -(Math.random() * 0.5 + 0.2),
+                alpha: Math.random()
+            };
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if(p.y < 0) p.y = canvas.height;
                 
-                const duration = Math.random() * 10 + 15;
-                wrap.style.animationDuration = duration + 's';
-                
-                const scale = Math.random() * 0.4 + 0.6;
-                const col = colors[Math.floor(Math.random() * colors.length)];
-                const uid = 'grad_' + Math.random().toString(36).substring(2);
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = '#d4af37';
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
 
-                wrap.innerHTML = `
-                    <svg width="${80 * scale}" height="${160 * scale}" viewBox="0 0 100 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="${uid}" cx="35%" cy="30%" r="60%">
-                                <stop offset="0%" stop-color="#ffffff"/>
-                                <stop offset="40%" stop-color="${col.c2}"/>
-                                <stop offset="100%" stop-color="${col.c1}"/>
-                            </radialGradient>
-                        </defs>
-                        <path d="M50 116 Q 45 150 55 170 T 45 200" stroke="rgba(229, 177, 93, 0.7)" stroke-width="1.5" fill="none"/>
-                        <polygon points="46,115 54,115 50,109" fill="${col.c1}"/>
-                        <ellipse cx="50" cy="56" rx="42" ry="54" fill="url(#${uid})"/>
-                    </svg>
-                `;
-
-                container.appendChild(wrap);
-                setTimeout(() => wrap.remove(), duration * 1000);
+        // 3. Efecto Sorpresa "Magia" (Lluvia de Corazones y Palomas Blancas)
+        function triggerMagicSurprise() {
+            // Explosión de corazones y oro
+            for(let i=0; i<30; i++) {
+                let x = canvas.width / 2 + (Math.random() * 200 - 100);
+                let y = canvas.height * 0.8 + (Math.random() * 50);
+                particles.push({
+                    x: x, y: y,
+                    size: Math.random() * 4 + 2,
+                    vx: (Math.random() - 0.5) * 4,
+                    vy: -(Math.random() * 6 + 2),
+                    alpha: 1,
+                    isHeart: Math.random() > 0.5
+                });
             }
 
-            for(let i=0; i<8; i++) setTimeout(createBalloon, i * 1500);
-            setInterval(createBalloon, 3000);
+            // Palomas Volando
+            releaseDoves();
         }
-        spawnWeddingBalloons();
 
-        // 3. Generación de Imagen Pixar y Confeti
+        function releaseDoves() {
+            const container = document.getElementById('doves-container');
+            const doveSVG = `<svg viewBox="0 0 24 24" width="45" height="45" fill="#fff" style="filter: drop-shadow(0 5px 10px rgba(0,0,0,0.8));"><path d="M12.9 6.2c.4-.3.9-.5 1.5-.5 2 0 4.2 1.3 5.4 3.2.3.4.4.9.4 1.4 0 2.2-2.1 4.5-4.8 5.6-1.7.7-3.7 1-5.4.8-1.5-.1-3-.7-4.2-1.8-.8-.8-1.4-1.9-1.7-3.1-.2-.8-.2-1.7 0-2.5.3-1.1 1-2.1 1.9-2.7 1-.7 2.3-1 3.5-.8 1.2.2 2.2.8 2.9 1.8l.5.7z"/></svg>`;
+            
+            for(let i=0; i<3; i++) {
+                setTimeout(() => {
+                    const dove = document.createElement('div');
+                    dove.innerHTML = doveSVG;
+                    dove.style.position = 'absolute';
+                    dove.style.bottom = '-50px';
+                    dove.style.left = (Math.random() * 30 - 10) + 'vw';
+                    dove.style.transition = 'transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 6s';
+                    dove.style.transform = `translate(0, 0) scale(${Math.random() * 0.5 + 0.8})`;
+                    
+                    container.appendChild(dove);
+                    
+                    setTimeout(() => {
+                        dove.style.transform = `translate(${Math.random() * 50 + 80}vw, -80vh) scale(${Math.random() * 0.5 + 0.8})`;
+                        dove.style.opacity = '0';
+                    }, 50);
+
+                    setTimeout(() => dove.remove(), 6000);
+                }, i * 400);
+            }
+        }
+
+        // Modificamos el loop de partículas para animar corazones
+        const originalAnimate = animateParticles;
+        animateParticles = function() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for(let i = particles.length - 1; i >= 0; i--) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                
+                if(p.isHeart !== undefined) {
+                    p.vy += 0.1; // Gravedad para la explosión
+                    p.alpha -= 0.015;
+                    if(p.alpha <= 0) { particles.splice(i, 1); continue; }
+                    
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = p.isHeart ? '#d48a8e' : '#d4af37';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    if(p.y < 0) p.y = canvas.height;
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = '#d4af37';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        };
+
+
+        // 4. Generación de Imagen Pixar y Confeti (Actualizada)
         async function generatePixarMoment() {
             const payload = {
                 contents: [{
                     role: 'user',
-                    parts: [{ text: "A highly detailed 3D render in Pixar animation style of a wedding ceremony in a beautiful small chapel. A handsome groom with well-defined hair wearing an elegant tuxedo, and a gorgeous bride with a highly detailed white wedding dress, veil, and beautiful hair, standing at the altar. In front of them, a priest in a white tunic officiating the ceremony, his head and features clearly visible. In the background, guests are sitting and happily applauding. Magical, festive atmosphere, romantic lighting, cinematic composition." }]
+                    parts: [{ text: "A highly detailed 3D render in Pixar animation style of a wedding ceremony in a beautiful small chapel. A handsome groom with well-defined hair wearing an elegant tuxedo, and a gorgeous bride with a highly detailed white wedding dress, veil, and beautiful hair, standing at the altar. Erika Valerio Núñez y Rodrigo Ríos Ruiz. In front of them, a priest in a white tunic officiating the ceremony, his head and features clearly visible. In the background, guests are sitting and happily applauding. Magical, festive atmosphere, romantic lighting, cinematic composition." }]
                 }],
                 generationConfig: {
                     responseModalities: ['IMAGE'],
@@ -668,7 +838,6 @@
                 }
             };
             
-            // La plataforma inyectará automáticamente la llave de API
             const apiKey = "";
             const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${apiKey}`;
 
@@ -700,23 +869,23 @@
             }
         }
 
-        // 4. Lluvia de Confeti sobre la imagen Pixar
+        // 5. Lluvia de Confeti sobre la imagen Pixar
         function startConfettiAnimation() {
-            const canvas = document.getElementById('confetti-canvas');
-            const ctx = canvas.getContext('2d');
-            const container = canvas.parentElement;
+            const canvasConfetti = document.getElementById('confetti-canvas');
+            const ctxC = canvasConfetti.getContext('2d');
+            const container = canvasConfetti.parentElement;
             
-            canvas.width = container.offsetWidth;
-            canvas.height = container.offsetHeight;
+            canvasConfetti.width = container.offsetWidth;
+            canvasConfetti.height = container.offsetHeight;
 
-            let particles = [];
-            const colors = ['#e5b15d', '#ffffff', '#40916c', '#f28482'];
+            let confettis = [];
+            const colors = ['#d4af37', '#ffffff', '#fef0c7'];
 
-            for(let i=0; i<60; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    r: Math.random() * 4 + 2,
+            for(let i=0; i<50; i++) {
+                confettis.push({
+                    x: Math.random() * canvasConfetti.width,
+                    y: Math.random() * canvasConfetti.height - canvasConfetti.height,
+                    r: Math.random() * 3 + 2,
                     dx: Math.random() * 2 - 1,
                     dy: Math.random() * 2 + 1,
                     color: colors[Math.floor(Math.random() * colors.length)],
@@ -727,23 +896,23 @@
             }
 
             function drawConfetti() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
+                ctxC.clearRect(0, 0, canvasConfetti.width, canvasConfetti.height);
+                confettis.forEach(p => {
                     p.tiltAngle += p.tiltAngleInc;
                     p.y += p.dy;
                     p.x += Math.sin(p.tiltAngle) * 2;
 
-                    if (p.y > canvas.height) {
-                        p.x = Math.random() * canvas.width;
+                    if (p.y > canvasConfetti.height) {
+                        p.x = Math.random() * canvasConfetti.width;
                         p.y = -20;
                     }
 
-                    ctx.beginPath();
-                    ctx.lineWidth = p.r;
-                    ctx.strokeStyle = p.color;
-                    ctx.moveTo(p.x + p.tilt + p.r, p.y);
-                    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
-                    ctx.stroke();
+                    ctxC.beginPath();
+                    ctxC.lineWidth = p.r;
+                    ctxC.strokeStyle = p.color;
+                    ctxC.moveTo(p.x + p.tilt + p.r, p.y);
+                    ctxC.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+                    ctxC.stroke();
                 });
                 requestAnimationFrame(drawConfetti);
             }
@@ -757,6 +926,30 @@
                 canvas.width = container.offsetWidth;
                 canvas.height = container.offsetHeight;
             }
+        });
+
+        // 5. Envío de Formulario RSVP a Google Sheets
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            btn.innerText = "Enviando...";
+            btn.disabled = true;
+
+            // Enlace oficial conectado a tu Google Sheets
+            const scriptURL = "https://script.google.com/macros/s/AKfycby24oeodv5tFk9mlyZN1iAyziDLGQAma6mDCc7xfGPVVlV9gJrrPEpNcgFI-QHQmR1o/exec"; 
+            const formData = new FormData(this);
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(() => {
+                document.getElementById('rsvp-form-container').style.display = 'none';
+                document.getElementById('rsvp-success').style.display = 'block';
+            }).catch(() => {
+                btn.innerText = "Error - Reintentar";
+                btn.disabled = false;
+            });
         });
     </script>
 </body>
