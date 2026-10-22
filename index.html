@@ -178,40 +178,36 @@
             background-color: transparent;
             position: relative;
             z-index: 20;
-            padding: 0 20px; /* Padding reducido para que en celular no se coma el texto */
+            padding: 0 20px;
         }
 
         .hero-section {
             position: relative;
-            height: 100vh;
-            min-height: 600px;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center;
             align-items: center;
-            padding-bottom: 12vh;
-            overflow: hidden;
+            padding: 60px 10px 40px;
             border-bottom: 1px solid var(--color-gold-elegant);
         }
 
-        .hero-img {
-            position: absolute;
-            inset: 0;
+        .hero-img-box {
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-            background-color: var(--color-bg-light);
-            z-index: -2;
-            opacity: 0.9;
+            max-width: 450px;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border: 5px solid #fff;
+            z-index: 2;
         }
 
-        .hero-gradient {
-            position: absolute;
-            inset: 0;
-            /* Gradiente claro para la portada */
-            background: linear-gradient(to top, var(--color-bg-light) 0%, rgba(253, 252, 240, 0.7) 20%, transparent 100%);
-            z-index: -1;
+        .hero-img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .names-title {
@@ -222,6 +218,7 @@
             text-align: center;
             margin-bottom: 15px;
             padding: 0 10px;
+            z-index: 2;
         }
 
         .date-badge {
@@ -237,6 +234,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             backdrop-filter: blur(5px);
+            z-index: 2;
         }
 
         .section-block {
@@ -245,7 +243,6 @@
             position: relative;
         }
 
-        /* Títulos mejorados */
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: clamp(2.5rem, 8vw, 3.5rem);
@@ -276,14 +273,14 @@
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             cursor: pointer;
-            height: 380px;
             border: 1px solid rgba(191, 167, 126, 0.2);
+            background: var(--color-bg-light);
         }
 
         .collage-item img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            display: block;
             transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
@@ -510,7 +507,6 @@
             .music-btn { right: 15px; width: 45px; height: 45px; }
             .names-title { font-size: 4rem; }
             .pixar-container { height: 300px; }
-            .collage-item { height: 320px; }
             .location-card { padding: 30px 15px; }
             .rsvp-card { padding: 30px 15px; }
         }
@@ -542,7 +538,7 @@
     <!-- Sobre Animado de Bienvenida (Colores Claros) -->
     <div id="welcome-envelope">
         <div class="envelope-details">
-            <p style="color: var(--color-gold-elegant); font-weight: 600; letter-spacing: 5px; margin-bottom: 70px; text-transform: uppercase;">Boda Civil</p>
+            <p style="color: var(--color-gold-elegant); font-weight: 600; letter-spacing: 5px; margin-bottom: 70px; text-transform: uppercase;">Nuestra Boda</p>
             <div class="seal-button" onclick="openInvitation()">
                 <span>E&R</span>
             </div>
@@ -553,9 +549,10 @@
     <div class="wrapper">
         
         <section class="hero-section">
-            <!-- NOTA: Imágenes renombradas a minúsculas y con espacio según instrucción -->
-            <img src="rodrigo 2.jpeg" alt="Erika y Rodrigo" class="hero-img" onerror="this.src='https://placehold.co/800x1200/fcfbf8/bfa77e?text=rodrigo+2.jpeg'">
-            <div class="hero-gradient"></div>
+            
+            <div class="hero-img-box">
+                <img src="rodrigo 2.jpeg" alt="Erika y Rodrigo" onerror="this.src='https://placehold.co/800x1000/fcfbf8/bfa77e?text=rodrigo+2.jpeg'">
+            </div>
 
             <p class="section-subtitle" style="margin-bottom: 15px; color: var(--color-gold-elegant);">¡Nos Casamos!</p>
             <h1 class="names-title">Erika <span style="font-size: 0.6em; color: var(--color-gold-elegant);">&</span> Rodrigo</h1>
