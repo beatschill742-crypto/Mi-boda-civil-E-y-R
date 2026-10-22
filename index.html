@@ -538,7 +538,8 @@
     <!-- Sobre Animado de Bienvenida (Colores Claros) -->
     <div id="welcome-envelope">
         <div class="envelope-details">
-            <p style="color: var(--color-gold-elegant); font-weight: 600; letter-spacing: 5px; margin-bottom: 70px; text-transform: uppercase;">Nuestra Boda</p>
+            <p style="color: var(--color-gold-elegant); font-weight: 600; letter-spacing: 5px; margin-bottom: 20px; text-transform: uppercase;">Nuestra Boda</p>
+            <p id="guest-name-display" style="color: var(--color-text-main); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 50px; display: none;"></p>
             <div class="seal-button" onclick="openInvitation()">
                 <span>E&R</span>
             </div>
@@ -620,7 +621,7 @@
                 </div>
                 <div class="itinerary-step">
                     <div class="itinerary-time">15:00 HRS</div>
-                    <div class="itinerary-desc">Ceremonia Civil</div>
+                    <div class="itinerary-desc">Ceremonia</div>
                 </div>
             </div>
         </section>
@@ -683,10 +684,6 @@
                                 <option value="Sí asisto">Sí asisto</option>
                                 <option value="No asisto">No asisto</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Número de Teléfono</label>
-                            <input type="tel" id="telefono" name="Telefono" class="form-input" placeholder="Ej. 55 1234 5678" required>
                         </div>
 
                         <button type="submit" class="btn-modern" id="submit-btn" style="width: 100%; margin-top: 10px; background: var(--color-gold-elegant); color: #fff;">
@@ -939,6 +936,27 @@
                 btn.innerText = "Error - Reintentar";
                 btn.disabled = false;
             });
+        });
+
+        // 7. Personalización de la invitación por URL
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const invitado = urlParams.get('invitado');
+            
+            if (invitado) {
+                // Mostrar el nombre en el sobre de bienvenida
+                const guestDisplay = document.getElementById('guest-name-display');
+                if(guestDisplay) {
+                    guestDisplay.innerText = "Para: " + invitado;
+                    guestDisplay.style.display = "block";
+                }
+                
+                // Llenar automáticamente el campo de nombre en las confirmaciones
+                const inputNombre = document.getElementById('nombre');
+                if(inputNombre) {
+                    inputNombre.value = invitado;
+                }
+            }
         });
     </script>
 </body>
