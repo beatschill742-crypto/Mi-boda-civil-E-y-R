@@ -557,6 +557,9 @@
 
             <p class="section-subtitle" style="margin-bottom: 15px; color: var(--color-gold-elegant);">¡Nos Casamos!</p>
             <h1 class="names-title">Erika <span style="font-size: 0.6em; color: var(--color-gold-elegant);">&</span> Rodrigo</h1>
+            
+            <!-- NUEVO: Contenedor para el nombre de los invitados debajo de los novios -->
+            <div id="hero-guest-name" style="display: none; text-align: center; color: var(--color-text-main); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; margin-top: -5px; margin-bottom: 20px;"></div>
 
             <div class="date-badge">
                 <span>19</span>
@@ -949,13 +952,20 @@
                 // Mostrar el nombre en el sobre de bienvenida
                 const guestDisplay = document.getElementById('guest-name-display');
                 if(guestDisplay) {
-                    let texto = "Para: " + invitado;
+                    let texto = "<span style='font-size: 1.2rem;'>Estás invitado a nuestra fiesta:</span><br><br><span style='font-size: 2rem;'>" + invitado + "</span>";
                     // Si el link trae pases, se los agregamos elegantemente abajo
                     if(pases) {
-                        texto += "<br><span style='font-size: 1rem; color: var(--color-gold-elegant); font-family: Montserrat, sans-serif; letter-spacing: 2px; font-style: normal; text-transform: uppercase;'>Boletos asignados: " + pases + "</span>";
+                        texto += "<br><br><span style='font-size: 0.9rem; color: var(--color-gold-elegant); font-family: Montserrat, sans-serif; letter-spacing: 2px; font-style: normal; text-transform: uppercase;'>Pases asignados: " + pases + "</span>";
                     }
                     guestDisplay.innerHTML = texto;
                     guestDisplay.style.display = "block";
+                }
+
+                // Mostrar el nombre debajo de Erika y Rodrigo en la sección principal
+                const heroGuestDisplay = document.getElementById('hero-guest-name');
+                if (heroGuestDisplay) {
+                    heroGuestDisplay.innerHTML = "Para nuestros invitados:<br><span style='font-weight: 600; color: var(--color-gold-elegant);'>" + invitado + "</span>";
+                    heroGuestDisplay.style.display = "block";
                 }
                 
                 // Llenar automáticamente el campo de nombre en las confirmaciones
