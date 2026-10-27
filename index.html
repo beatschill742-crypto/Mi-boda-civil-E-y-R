@@ -685,6 +685,7 @@
                                 <option value="No asisto">No asisto</option>
                             </select>
                         </div>
+                        <!-- Campo de teléfono ELIMINADO según indicaciones -->
 
                         <button type="submit" class="btn-modern" id="submit-btn" style="width: 100%; margin-top: 10px; background: var(--color-gold-elegant); color: #fff;">
                             Enviar Confirmación
@@ -942,12 +943,18 @@
         document.addEventListener("DOMContentLoaded", () => {
             const urlParams = new URLSearchParams(window.location.search);
             const invitado = urlParams.get('invitado');
+            const pases = urlParams.get('pases'); // Captura el número de pases de la URL
             
             if (invitado) {
                 // Mostrar el nombre en el sobre de bienvenida
                 const guestDisplay = document.getElementById('guest-name-display');
                 if(guestDisplay) {
-                    guestDisplay.innerText = "Para: " + invitado;
+                    let texto = "Para: " + invitado;
+                    // Si el link trae pases, se los agregamos elegantemente abajo
+                    if(pases) {
+                        texto += "<br><span style='font-size: 1rem; color: var(--color-gold-elegant); font-family: Montserrat, sans-serif; letter-spacing: 2px; font-style: normal; text-transform: uppercase;'>Boletos asignados: " + pases + "</span>";
+                    }
+                    guestDisplay.innerHTML = texto;
                     guestDisplay.style.display = "block";
                 }
                 
