@@ -142,12 +142,14 @@
 
         .envelope-details {
             border: 1px solid var(--color-gold-elegant);
-            padding: 50px;
+            padding: 40px;
             border-radius: 8px;
             text-align: center;
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(15px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            max-width: 90%;
+            width: 400px;
         }
 
         .seal-button {
@@ -158,7 +160,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: -95px auto 25px;
+            margin: 20px auto 25px; /* Aquí se corrigió el margen que empalmaba todo */
             cursor: pointer;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1), inset 0 2px 5px rgba(255,255,255,0.4);
             border: 2px solid #fff;
@@ -312,58 +314,6 @@
         .collage-item:hover .collage-overlay { opacity: 1; }
         .collage-item:hover .collage-quote { transform: translateY(0); }
 
-        
-        .pixar-container {
-            position: relative;
-            width: 100%;
-            height: 450px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-            border: 1px solid var(--color-gold-elegant);
-            background: var(--color-bg-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        #pixar-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: cinematicPan 18s ease-in-out infinite alternate;
-            transform-origin: 30% 40%;
-        }
-
-        @keyframes cinematicPan {
-            0% { transform: scale(1.02) translate(0, 0); }
-            50% { transform: scale(1.08) translate(-1%, 2%); }
-            100% { transform: scale(1.05) translate(2%, -1%); }
-        }
-
-        .light-rays {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(45deg, rgba(255,255,255,0) 20%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 80%);
-            background-size: 200% 200%;
-            animation: shineRays 7s infinite linear;
-            z-index: 4;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        @keyframes shineRays {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        #confetti-canvas {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: 5;
-        }
-
         .location-card {
             background: var(--color-bg-alt);
             border: 1px solid rgba(191, 167, 126, 0.4);
@@ -386,7 +336,6 @@
             display: inline-block;
         }
 
-        /* Nuevas Secciones */
         .countdown-grid {
             display: flex;
             justify-content: center;
@@ -506,7 +455,6 @@
             .magic-fab { left: 15px; padding: 8px 12px; font-size: 0.7rem;}
             .music-btn { right: 15px; width: 45px; height: 45px; }
             .names-title { font-size: 4rem; }
-            .pixar-container { height: 300px; }
             .location-card { padding: 30px 15px; }
             .rsvp-card { padding: 30px 15px; }
         }
@@ -535,11 +483,16 @@
         <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
     </div>
 
-    <!-- Sobre Animado de Bienvenida (Colores Claros) -->
+    <!-- Sobre Animado de Bienvenida -->
     <div id="welcome-envelope">
         <div class="envelope-details">
             <p style="color: var(--color-gold-elegant); font-weight: 600; letter-spacing: 5px; margin-bottom: 20px; text-transform: uppercase;">Nuestra Boda</p>
-            <p id="guest-name-display" style="color: var(--color-text-main); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 50px; display: none;"></p>
+            <p style="color: var(--color-text-main); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">Estás invitado a nuestra fiesta:</p>
+            <p id="guest-name-welcome" style="color: var(--color-text-main); font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; line-height: 1.2; font-style: italic; margin-bottom: 15px; display: none; padding: 0 10px;"></p>
+            
+            <!-- Aquí el texto de pases se cambia a color oscuro para mayor lectura -->
+            <p id="passes-welcome" style="color: var(--color-text-main); font-size: 0.9rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; margin-bottom: 30px; display: none;"></p>
+            
             <div class="seal-button" onclick="openInvitation()">
                 <span>E&R</span>
             </div>
@@ -557,9 +510,8 @@
 
             <p class="section-subtitle" style="margin-bottom: 15px; color: var(--color-gold-elegant);">¡Nos Casamos!</p>
             <h1 class="names-title">Erika <span style="font-size: 0.6em; color: var(--color-gold-elegant);">&</span> Rodrigo</h1>
-            
-            <!-- NUEVO: Contenedor para el nombre de los invitados debajo de los novios -->
-            <div id="hero-guest-name" style="display: none; text-align: center; color: var(--color-text-main); font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; margin-top: -5px; margin-bottom: 20px;"></div>
+
+            <p id="guest-name-hero" style="color: var(--color-text-main); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin-top: 15px; margin-bottom: 25px; display: none;"></p>
 
             <div class="date-badge">
                 <span>19</span>
@@ -688,7 +640,6 @@
                                 <option value="No asisto">No asisto</option>
                             </select>
                         </div>
-                        <!-- Campo de teléfono ELIMINADO según indicaciones -->
 
                         <button type="submit" class="btn-modern" id="submit-btn" style="width: 100%; margin-top: 10px; background: var(--color-gold-elegant); color: #fff;">
                             Enviar Confirmación
@@ -946,32 +897,35 @@
         document.addEventListener("DOMContentLoaded", () => {
             const urlParams = new URLSearchParams(window.location.search);
             const invitado = urlParams.get('invitado');
-            const pases = urlParams.get('pases'); // Captura el número de pases de la URL
+            const pases = urlParams.get('pases');
             
             if (invitado) {
                 // Mostrar el nombre en el sobre de bienvenida
-                const guestDisplay = document.getElementById('guest-name-display');
-                if(guestDisplay) {
-                    let texto = "<span style='font-size: 1.2rem;'>Estás invitado a nuestra fiesta:</span><br><br><span style='font-size: 2rem;'>" + invitado + "</span>";
-                    // Si el link trae pases, se los agregamos elegantemente abajo
-                    if(pases) {
-                        texto += "<br><br><span style='font-size: 0.9rem; color: var(--color-gold-elegant); font-family: Montserrat, sans-serif; letter-spacing: 2px; font-style: normal; text-transform: uppercase;'>Pases asignados: " + pases + "</span>";
-                    }
-                    guestDisplay.innerHTML = texto;
-                    guestDisplay.style.display = "block";
+                const welcomeDisplay = document.getElementById('guest-name-welcome');
+                if(welcomeDisplay) {
+                    welcomeDisplay.innerText = invitado;
+                    welcomeDisplay.style.display = "block";
                 }
 
-                // Mostrar el nombre debajo de Erika y Rodrigo en la sección principal
-                const heroGuestDisplay = document.getElementById('hero-guest-name');
-                if (heroGuestDisplay) {
-                    heroGuestDisplay.innerHTML = "Para nuestros invitados:<br><span style='font-weight: 600; color: var(--color-gold-elegant);'>" + invitado + "</span>";
-                    heroGuestDisplay.style.display = "block";
+                // Mostrar el nombre en la portada (hero)
+                const heroDisplay = document.getElementById('guest-name-hero');
+                if(heroDisplay) {
+                    heroDisplay.innerText = "Para nuestros invitados:\n" + invitado;
+                    heroDisplay.style.display = "block";
                 }
                 
                 // Llenar automáticamente el campo de nombre en las confirmaciones
                 const inputNombre = document.getElementById('nombre');
                 if(inputNombre) {
                     inputNombre.value = invitado;
+                }
+            }
+
+            if (pases) {
+                const passesWelcome = document.getElementById('passes-welcome');
+                if (passesWelcome) {
+                    passesWelcome.innerText = "Pases asignados: " + pases;
+                    passesWelcome.style.display = "block";
                 }
             }
         });
